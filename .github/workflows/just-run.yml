@@ -1,0 +1,22 @@
+name : Just run it
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  stable:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Go Stable
+        uses: ./
+        with:
+          go-version: stable
+      - name: Verify Go
+        run: go version
