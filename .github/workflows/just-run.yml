@@ -3,7 +3,7 @@ name : Just run it
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   stable:
